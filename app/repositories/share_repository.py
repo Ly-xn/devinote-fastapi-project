@@ -1,5 +1,3 @@
-
-
 from tkinter import Label
 from typing import List
 from sqlmodel import Session, delete, select
@@ -53,7 +51,7 @@ class ShareRepository:
 
     def has_note_share(self, note_id: int, user_id:int, role:str | None = None) -> bool:
         query = select(NoteShare).where(
-            NoteShare.note_id == note_id, NoteShare.note_id == user_id
+            NoteShare.note_id == note_id, NoteShare.user_id == user_id
         )
 
         if role is not None:
