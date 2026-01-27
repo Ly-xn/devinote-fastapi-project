@@ -10,7 +10,7 @@ class Label(SQLModel, table = True):
 
 class NoteLabelLink(SQLModel, table=True):
     __tablename__= "note_label_link" #magic attribute
-    __table_args__ = (UniqueConstraint("note_id", "label_id", name="uq_label_owner_name"))
+    __table_args__ = (UniqueConstraint("note_id", "label_id", name="uq_note_label_link"))
     id: int = Field(default=None, primary_key=True)
     note_id: int = Field(foreign_key="note.id", index=True)
     label_id: int = Field(foreign_key="label.id", index=True)
@@ -21,4 +21,4 @@ class LabelCreate(SQLModel):
 class LabelRead(SQLModel):
     id: int
     name: str
-    model_config: {"from_attributes": True}
+    model_config: {"from_attributes": True} 

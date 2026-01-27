@@ -23,7 +23,7 @@ class LabelRepository:
 
     def create(self, owner_id: int, name:str) -> Label:
         label = Label(owner_id=owner_id, name=name)
-        self.db.get(label)
+        self.db.add(label)
         self.db.commit()
         self.db.refresh(label)
         return label

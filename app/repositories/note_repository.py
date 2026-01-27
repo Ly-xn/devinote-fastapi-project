@@ -38,7 +38,7 @@ class NoteRepository:
 
     def replace_labels(self, owner_id: int, note_id: int, label_ids: list[int]) -> None:
         query = delete(NoteLabelLink).where(NoteLabelLink.note_id == note_id)
-        self.db.exce(query)
+        self.db.exec(query)
 
         for label in set(label_ids or []):
             self.db.add(NoteLabelLink(note_id=note_id, label_id=label))
@@ -49,4 +49,4 @@ class NoteRepository:
         if not ids:
             return []
 
-        return self.db.exec(select(Note).where(Note.id.in_(ids))).all()
+        return self.db.exec(select(Note).where(Note.id.in_(set(ids)))).all()
