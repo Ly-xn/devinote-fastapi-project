@@ -24,3 +24,7 @@ class LabelShare(SQLModel, table= True):
     label_id: int = Field(foreign_key="label.id", index=True)
     user_id: int = Field(foreign_key="user.id", index=True)    
     role: ShareRole = Field(default= ShareRole.READ) #Por defecto, el rol de los usuarios es READ
+
+class ShareRequest(SQLModel):
+    target_user_id: int = Field(gt=0)
+    role: ShareRole = ShareRole.READ
