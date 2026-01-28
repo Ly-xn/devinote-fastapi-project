@@ -1,7 +1,7 @@
 from app.core.security import create_access_token, hash_password, verify_password
 from app.models.user import User, UserCreate
 from app.repositories.user_repository import UserRepository
-from fastapi.exceptions import HTTPException, status
+from fastapi.exceptions import HTTPException
 
 class AuthService:
     def __init__(self, repo: UserRepository):

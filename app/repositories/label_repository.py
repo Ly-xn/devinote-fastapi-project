@@ -38,9 +38,7 @@ class LabelRepository:
         if not ids:
             return []
         return self.db.exec(
-            select(Label.id).where(Label.owner_id == owner_id),
-            Label.id.in_(set(ids))
-        ).all()
+            select(Label.id).where(Label.owner_id == owner_id, Label.id.in_(set(ids)))).all()
 
     def list_label_ids_for_note(self, note_id: int) -> list[int]:
         return self.db.exec(

@@ -46,10 +46,10 @@ class ShareRepository:
         return share
 
     def remove_label_share(self, label_id: int, user_id: int) -> None:
-        self.db.exec(delete(LabelShare).where(NoteShare.label_id == label_id, LabelShare.user_id == user_id))
+        self.db.exec(delete(LabelShare).where(LabelShare.label_id == label_id, LabelShare.user_id == user_id))
         self.db.commit()
 
-    def has_note_share(self, note_id: int, user_id:int, role:str | None = None) -> bool:
+    def has_note_share(self, note_id: int, user_id:int,  role:str | None = None) -> bool:
         query = select(NoteShare).where(
             NoteShare.note_id == note_id, NoteShare.user_id == user_id
         )
