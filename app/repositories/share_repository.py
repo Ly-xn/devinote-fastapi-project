@@ -1,4 +1,3 @@
-from tkinter import Label
 from typing import List
 from sqlmodel import Session, delete, select
 
