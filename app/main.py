@@ -14,7 +14,7 @@ load_dotenv()
 #manejador de ciclo de vida
 @asynccontextmanager
 async def lifespan(app: FastAPI):
-    init_db() #inicializa la base de datos
+    #init_db() #inicializa la base de datos
     yield
 
 app = FastAPI(
